@@ -1,0 +1,42 @@
+<div class="row mt-5">
+  <div class="col-md-12">
+    <div class="row justify-content-md-center">
+      <div class="col-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Find contact</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Find contact" aria-describedby="inputGroup-sizing-lg" (keyup)="findContact($event.target.value)">
+        </div>
+        <div
+          class="card mt-5 m-auto"
+          style="width: 18rem;"
+          *ngIf="contact"
+        >
+          <div class="card-body">
+            <p class="card-text m-2">Name: {{ contact.name }}</p>
+            <p class="card-text m-2">Mobile: {{ contact.mobile }}</p>
+            <hr />
+
+            <p class="card-text">Created At: {{ contact.createdAt | date: "medium" }}</p>
+
+          </div>
+        </div>
+        <div class="text-center">
+          <ng-container *ngIf="(!loading && searchText && !contact)">
+            No record found
+          </ng-container>
+          <ng-container *ngIf="(!searchText)">
+            Please input a contact name to find it
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-primary" routerLink="/add-contact">
+          + Add New Contact
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
